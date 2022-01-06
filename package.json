@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "cypress": "^9.1.0"
+  },
+  "name": "cypress---udemy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "��#\u0000 \u0000E\u0000s\u0000t\u0000u\u0000d\u0000o\u0000s\u0000C\u0000y\u0000r\u0000p\u0000r\u0000e\u0000s\u0000s\u0000\r\u0000 \u0000",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/feroline/EstudosCyrpress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/feroline/EstudosCyrpress/issues"
+  },
+  "homepage": "https://github.com/feroline/EstudosCyrpress#readme"
+}
