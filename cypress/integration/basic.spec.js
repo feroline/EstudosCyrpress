@@ -1,7 +1,7 @@
 /// <reference types="cypress" /> 
 
 describe('Basic', () => {
-    it.skip('Should visit a page and assert title', () => {
+    it.only('Should visit a page and assert title', () => {
         cy.visit('https://wcaquino.me/cypress/componentes.html')
         // console.log(cy.title().should('be.equal', 'açlsdçlaskd'));
         // cy.title().should('be.equal', 'Campo de Treinamento');
@@ -12,6 +12,16 @@ describe('Basic', () => {
             .should('be.equal', 'Campo de Treinamento')
             .and('contain', 'Campo')
 
+        cy.title().debug();
+
+        
+        cy.title().then(title => { //promisse
+            console.log(title)
+        })
+
+        cy.title().should(title => { //promisse
+            console.log(title)
+        })
     });
 
     describe('Challengs', () => {

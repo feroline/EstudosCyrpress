@@ -54,10 +54,17 @@ describe('Esperas ... ',() => {
          //cy.wait(1000) // Evite o waat fixo, pois nos dias em que a aplicação estiver boa o tempo de espera será o mesmo.
     });
 
-    it.only('Click retry' , () => {
+    it('Click retry' , () => {
         cy.get('#buttonCount')
             .click()
             .click()
             .should('have.value',111)
+    })
+
+    it('Should vs Then', () => {
+
+        cy.get('#buttonListDOM').click();
+        cy.get('#lista li span').debug()
+
     })
 });
