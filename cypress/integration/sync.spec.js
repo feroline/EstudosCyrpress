@@ -34,12 +34,30 @@ describe('Esperas ... ',() => {
         });
             // .find('span')
             // .should('containq','Item 1');
-
-       it.only('Uso do timeout', () => {
-        //    cy.get('#novoCampo', {timeout: 1000}).should('exist'); //timeout é passado como um atributo, mas também pode ser passado no json
-            cy.get('#novoCampo').click();
-            cy.get('#novoCampo').should('exist');
-       });
     });
-""
+
+    it('Uso do timeout', () => {
+        //timeout é passado como um atributo, mas também pode ser passado no json. É o tempo de espera até dar o erro ou o acerto, não sendo um tempo fixo como o wait()
+     //    cy.get('#novoCampo', {timeout: 1000}).should('exist'); 
+         // cy.get('#novoCampo').should('exist');
+
+         cy.get('#buttonListDOM').click();
+         cy.get('#lista li span', {timeout:30000})
+             .should('contain', 'Item 2');
+
+         cy.get('#buttonListDOM').click();
+         cy.get('#lista li span')
+             .should('have.length', 1);
+
+         cy.get('#lista li span')
+             .should('have.length', 2);
+         //cy.wait(1000) // Evite o waat fixo, pois nos dias em que a aplicação estiver boa o tempo de espera será o mesmo.
+    });
+
+    it.only('Click retry' , () => {
+        cy.get('#buttonCount')
+            .click()
+            .click()
+            .should('have.value',111)
+    })
 });
