@@ -61,10 +61,35 @@ describe('Esperas ... ',() => {
             .should('have.value',111)
     })
 
-    it('Should vs Then', () => {
+    it.only('Should vs Then', () => {
 
         cy.get('#buttonListDOM').click();
-        cy.get('#lista li span').debug()
+
+        describe('THEN', () => {  //then = espera o elemento existir par apoder executar a ação, com ele eu consigo colocar um return e fazer qualquer coisa depois
+             
+            cy.get('#lista li span').then($elemento => { //o $ é só para dizer que é um elemento da tela, não é regra, apenas organização
+                console.log( `THEN: ${$elemento}`)
+                expect($elemento).to.have.length(1) //como é um elemento html, não pode ser tratado com as funções do cypress
+                return 2; 
+            }).and('eq', 2)
+
+            cy.get('#buttonListDOM').then($elemento => {
+                console.log( `THEN: ${$elemento}`)
+                expect($elemento).to.have.length(1)
+            }).and('have.id', 'buttonListDOM')
+        })
+
+        describe('SHOULD', () => { // should = fica executando o código até que o elemento exista, além de ignorar qualquer return  dentro dele, porque so retorna o elemento passado $elemento
+            
+            cy.get('#lista li span').should($elemento => { //o $ é só para dizer que é um elemento da tela, não é regra, apenas organização
+                console.log( `SHOULD: ${$elemento}`)
+                expect($elemento).to.have.length(2) //como é um elemento html, não pode ser tratado com as funções do cypress
+            })
+
+        })
+      
+        
+
 
     })
 });
