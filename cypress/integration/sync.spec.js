@@ -20,7 +20,7 @@ describe('Esperas ... ',() => {
             .type('eae');
     });
 
-    it.only('uso do find', () => {
+    it('Uso do find', () => {
         cy.get('#buttonList').click();
         
         
@@ -35,9 +35,10 @@ describe('Esperas ... ',() => {
             // .find('span')
             // .should('containq','Item 1');
 
-       it.only('uso do timeout', () => {
-        //    cy.get('#novoCampo', {timeout: 1000}).should('exist');
-           cy.get('#novoCampo').should('exist');
+       it.only('Uso do timeout', () => {
+        //    cy.get('#novoCampo', {timeout: 1000}).should('exist'); //timeout é passado como um atributo, mas também pode ser passado no json
+            cy.get('#novoCampo').click();
+            cy.get('#novoCampo').should('exist');
        });
     });
 ""
