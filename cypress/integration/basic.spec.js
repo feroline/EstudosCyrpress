@@ -14,9 +14,17 @@ describe('Basic', () => {
 
         cy.title().debug();
 
-        
+        // se eu quiser pegar esse title e utilizar mais a frente, irei fazer da seguinte forma
+        let  syncTitle;
+
         cy.title().then(title => { //promisse
             console.log(title)
+            cy.get('#formNome').type(title)
+            syncTitle = title
+        })
+
+        cy.get('[data-cy="dataSobrenome"]').then($el => {
+            $el.
         })
 
         cy.title().should(title => { //promisse
