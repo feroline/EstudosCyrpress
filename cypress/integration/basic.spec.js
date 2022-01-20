@@ -12,7 +12,7 @@ describe('Basic', () => {
             .should('be.equal', 'Campo de Treinamento')
             .and('contain', 'Campo')
 
-        cy.title().debug();
+        // cy.title().debug();
 
         // se eu quiser pegar esse title e utilizar mais a frente, irei fazer da seguinte forma
         let  syncTitle;
@@ -24,7 +24,7 @@ describe('Basic', () => {
         })
 
         cy.get('[data-cy="dataSobrenome"]').then($el => {
-            $el.
+            cy.wrap($el).type(syncTitle)
         })
 
         cy.title().should(title => { //promisse

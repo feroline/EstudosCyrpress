@@ -54,8 +54,8 @@ describe('Helpers...', () => {
             .should('have.property', 'endereco')
             .should('have.property', 'rua', 'Rua dos bobos') 
 
-        cy.wrap(objeto2) //bom
-            .its('endereco')
+        cy.wrap(objeto2) //bom !! só aceita objeto
+            .its('endereco') 
             .its('rua')
             .should('be.equal', 'Rua dos bobos')
         
