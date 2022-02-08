@@ -109,29 +109,15 @@ describe('Work itens with alerts', () => {
                 .click()
                 .should('be.checked')
             
-            cy.get('#formCadastrar').click()
-
-            //RESULTADO
             let resultado = ['Andre', 'Bezerra', 'Feminino']
-            cy.get('#resultado')
 
-            cy.then(4000,()=>{
-        
-                let quantResultado;
-                Cypress.$('#resultado').children().each(($el, index) => {
-                    
-                    let el = Cypress.$(`#${index.getAttribute('id')}`).text()
+            //VERIFICANDO RESULTADO
+            cy.get('#formCadastrar').click().then(()=>{
                 
-                
-                    if(cy.wrap(el).contains(resultado[$el])){
-                        cy.get(index.getAttribute('id')).should('have.text', resultado[$el])
-                    }
-                    
-                })
-                // console.log(ids)
-                // $teste.each((element, index) => {
-                    // console.log(element.innerText)
-                // })
+                resultado.forEach((el,index)=>{
+                    cy.get('#resultado').should('include.text', resultado[index])
+                })         
+
             })
 
         })
