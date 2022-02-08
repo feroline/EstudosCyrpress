@@ -24,6 +24,5 @@ describe('Work itens with iFrame', () => {
         })
         cy.get('#otherButton').click()
             
-       
     })
 })
