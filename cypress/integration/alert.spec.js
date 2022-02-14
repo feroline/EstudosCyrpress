@@ -9,12 +9,15 @@ describe('Work itens with alerts', () => {
         cy.reload()
     })
 
-    it('Alert sem mock', () => {
+    it.only('Alert sem mock', () => {
         cy.get('#alert').click()
         cy.on('window:alert', mensagem => { //pega eventos que ocorrem na tela
             console.log(mensagem) 
             expect(mensagem).to.be.equal('Alert Simples')
         }) 
+
+        //criei um command para agilizar os processos
+        cy.clickAlert('#alert', 'Alert Simples')
     })
  
     // mock substitui a função e define um comportamento, guardando as interações para verificá-las
@@ -78,7 +81,7 @@ describe('Work itens with alerts', () => {
 
     describe('Desafio proposto', () => {
 
-        it.only('Validando mensagens', () => {
+        it('Validando mensagens', () => {
             const stub = cy.stub().as('Alerta')
             
             //NOME

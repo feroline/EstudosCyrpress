@@ -1,11 +1,11 @@
 {
   "dependencies": {
-    "cypress": "^9.1.0"
+    "cypress": "^9.1.0",
+    "cypress-xpath": "^1.6.2"
   },
   "name": "cypress---udemy",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:open": "cypress open"

@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+Cypress.Commands.add('clickAlert', (locator,mensage) => {
+
+    cy.get(locator).click()
+    cy.on('window:alert', mensagem => { //pega eventos que ocorrem na tela
+        console.log(mensagem) 
+        expect(mensagem).to.be.equal(mensage)
+    }) 
+    
+})
