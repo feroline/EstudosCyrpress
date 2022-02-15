@@ -5,7 +5,8 @@ const locators = {
         USER: '[data-test=email]',
         PASSWORD: '[data-tets=passwd]',
         BUTTON: '.btn'
-    }
+    },
+    FUNCTION_EXEMPLO : (nome) => `[data-test=${nome}]` //referencia a ela como uma função
 }
 
 export default locators; 

@@ -24,6 +24,7 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
+import locators from './locators'
 
 Cypress.Commands.add('clickAlert', (locator,mensage) => {
 
@@ -32,5 +33,11 @@ Cypress.Commands.add('clickAlert', (locator,mensage) => {
         console.log(mensagem) 
         expect(mensagem).to.be.equal(mensage)
     }) 
-    
+})
+
+Cypress.Commands.add('Login', (usuario,senha) => {
+    cy.visit('https://wcaquino.me/cypress/componentes.html')
+    cy.get(locators.LOGIN.USER).type(usuario)
+    cy.get(locators.LOGIN.PASSWORD).type(senha)
+    cy.get(locators.LOGIN.BUTTON).click()
 })
