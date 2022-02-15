@@ -9,7 +9,7 @@ describe('Work itens with alerts', () => {
         cy.reload()
     })
 
-    it.only('Alert sem mock', () => {
+    it('Alert sem mock', () => {
         cy.get('#alert').click()
         cy.on('window:alert', mensagem => { //pega eventos que ocorrem na tela
             console.log(mensagem) 
