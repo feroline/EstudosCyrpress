@@ -41,3 +41,48 @@ Cypress.Commands.add('Login', (usuario,senha) => {
     cy.get(locators.LOGIN.PASSWORD).type(senha)
     cy.get(locators.LOGIN.BUTTON).click()
 })
+
+Cypress.Commands.add('getToken', (usuario, senha) => { //função para pegar e retornar o token
+    it('Criar uma conta',()=>{
+        cy.request({
+            method: 'POST',
+            url: '/signin',
+            body: { //a requisição é mandada para o body
+                email: usuario,
+                redirecionar: false,
+                senha: senha
+            }
+        }).its('body.token').should('not.be.empty') //verifica se deu certo o login
+        .then(token => {
+            Cypress.env('token', token) //salva o token no .env do cypress
+            return token 
+        })})
+        .its('status').should('eq', 200)
+})
+
+//tem que pegar o id de um registor especifico, porque a cada alteração o id é diferente, dessa forma: 
+Cypress.Commands.add('getContaByName', (nome, token) => { 
+    cy.request({
+        method: 'GET',
+        url: `/contas`,
+        headers: { Authorization:`JWT ${token}`},
+        qs: { //querySeletor
+            nome: nome //passando parametros para url para pegar o registro específico
+        }
+    }).then(resp => {
+        return resp.body[0].id //pegou o id para passar corretamente para url
+    })
+
+});
+
+//sobrescreve o requeste do cypress para não ter que ficar chamando o token o tempo todo
+Cypress.Commands.overwrite('request', (originalFn, ...options) => {
+    //se receber apenas um valor, um parametro com todos os dados lá dentro
+    if(options.length === 1){
+        if(Cypress.env('token')){ //se ele existir no .env
+            options[0].headers = {
+                Authorization = `JWT ${Cypress.env('token')}` //adiciona o token no header
+            }
+        }
+    }
+})
