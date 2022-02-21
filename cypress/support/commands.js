@@ -76,13 +76,13 @@ Cypress.Commands.add('getContaByName', (nome, token) => {
 });
 
 //sobrescreve o requeste do cypress para não ter que ficar chamando o token o tempo todo
-Cypress.Commands.overwrite('request', (originalFn, ...options) => {
-    //se receber apenas um valor, um parametro com todos os dados lá dentro
-    if(options.length === 1){
-        if(Cypress.env('token')){ //se ele existir no .env
-            options[0].headers = {
-                Authorization = `JWT ${Cypress.env('token')}` //adiciona o token no header
-            }
-        }
-    }
-})
+// Cypress.Commands.overwrite('request', (originalFn, ...options) => {
+//     //se receber apenas um valor, um parametro com todos os dados lá dentro
+//     if(options.length === 1){
+//         if(Cypress.env('token')){ //se ele existir no .env
+//             options[0].headers = {
+//                 Authorization = `JWT ${Cypress.env('token')}` //adiciona o token no header
+//             }
+//         }
+//     }
+// })
